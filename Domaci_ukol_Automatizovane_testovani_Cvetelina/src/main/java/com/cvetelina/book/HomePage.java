@@ -1,12 +1,21 @@
 package com.cvetelina.book;
 
-import org.openqa.selenium.WebDriver;
+import java.util.*;
+import javax.xml.soap.*;
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.sun.java.util.jar.pack.*;
+import com.sun.org.apache.xml.internal.security.utils.*;
+import sun.awt.*;
+
 import static com.cvetelina.book.DriverInit.goToHomePage;
 import static com.cvetelina.book.DriverInit.initializeDriver;
+import static org.testng.Assert.*;
 
 public class HomePage {
 
@@ -30,10 +39,34 @@ public class HomePage {
   @Test
   public void homePageTest() {
     //test bude zde.
-    driver.navigate().to("https://www.google.com/");
-
+    //jen zkouším
+    WebElement inputField = driver.findElement(By.id("q"));
+    inputField.sendKeys("Cvetelina");
   }
 
+  @Test
+  public void findUrls() {
+    //List<String> expected = Arrays.asList("Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter8");
+    String[] expected = {"Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter8"};
+    for (int i = 0; i < expected.length; i++) {
+      System.out.println(expected[i]);
+      }
+    //System.out.println(expected) ;
+    List<WebElement> liElements = driver.findElements(By.xpath("//ul/li"));
+    for (WebElement element : liElements) {
+
+      System.out.println(element.getText());
+      }
+
+//List<WebElement> liElements = driver.findElements(By.xpath("//ul/li"));
+    //System.out.println(liElements.size());
+    //for (int i = 1; i < liElements.size()+1; i++) {
+    // WebElement linkElement = driver.findElement(By.xpath("//ul/li[" + i + "]/a"));
+
+    //System.out.println(linkElement.getText());
+    //Assert.assertEquals(expected, liElements.gettext());
+    //Assert.assertEquals(expected, liElements);
+    }
   /**
    * Takto se po testech uklizi. Pokud je potreba. Muzeme treba zavrit okno, atp.
    */
