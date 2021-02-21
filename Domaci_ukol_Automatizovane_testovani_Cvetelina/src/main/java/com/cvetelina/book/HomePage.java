@@ -65,7 +65,7 @@ public class HomePage {
     @AfterClass
     public void cleanUp() {
         //not needed right now
-        driver.close();
+        //driver.close();
     }
 
 }
