@@ -16,7 +16,7 @@ public class DriverInit {
    */
   public static WebDriver initializeDriver() {
     WebDriver driver;
-    System.setProperty("webdriver.chrome.driver", "C:/Users/Cveti/git1/Testy/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "C:/Users/David/Downloads/chromedriver_win32/chromedriver.exe");
     //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //Path to chromedriver at mac machine
     driver = new ChromeDriver();
     return driver;
