@@ -17,7 +17,10 @@ public class HomePage {
 
     private static WebDriver driver;
     public static final String CHAPTERS_LIST = "//*[contains(@class,'mainbody')]/ul//li";
-    
+    /**
+     * Pridal jsem do POM TestNg anotace. Takze misto jUnit budeme pouzivat TestNg. To nam dava moznost pouzivat i Asserty atp. Je to obdoba jUnit.
+     * Tato metoda udela to, ze nainicializuje chrome driver a vstoupi na domovskou stranku. Presne nejak takto muze vypadat setup testu co napises testu.
+     */
     @BeforeClass
     public void beforeClassSetup() {
         driver = initializeDriver();
@@ -60,8 +63,9 @@ public class HomePage {
             Assert.assertTrue(firstElement[0].contains("Below is a list of links to the examples needed in the chapters. Click on the links below and follow the steps in the book."));
         }
     }
-
-
+    /**
+     * Takto se po testech uklizi. Pokud je potreba. Muzeme treba zavrit okno, atp.
+     */
     @AfterClass
     public void cleanUp() {
         //not needed right now
