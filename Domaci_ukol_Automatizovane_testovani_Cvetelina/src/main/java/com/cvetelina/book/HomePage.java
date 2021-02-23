@@ -32,7 +32,7 @@ public class HomePage {
 
     @Test
     public void findUrlsTest() {
-        List<String> expectedNames = Arrays.asList("Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter8");
+        List<String> expectedNames = Arrays.asList("Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5");
         System.out.println(expectedNames);
         List<WebElement> liElements = driver.findElements(By.xpath(CHAPTERS_LIST));
         for (int i = 0; i < expectedNames.size(); i++) {
@@ -65,7 +65,7 @@ public class HomePage {
     @AfterClass
     public void cleanUp() {
         //not needed right now
-        //  driver.close();
+        //driver.close();
     }
 =======
   private static WebDriver driver;
