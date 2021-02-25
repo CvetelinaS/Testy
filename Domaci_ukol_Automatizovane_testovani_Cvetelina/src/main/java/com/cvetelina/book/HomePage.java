@@ -15,7 +15,7 @@ public class HomePage {
   private static WebDriver driver;
   public static final String CHAPTERS_LIST = "//*[contains(@class,'mainbody')]/ul//li";
 
-
+   // Tohle je komentar 
   @BeforeClass
   public void beforeClassSetup() {
     driver = initializeDriver();
