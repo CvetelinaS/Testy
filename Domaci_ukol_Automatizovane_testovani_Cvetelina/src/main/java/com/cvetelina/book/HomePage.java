@@ -16,58 +16,58 @@ import static com.cvetelina.book.DriverInit.initializeDriver;
 
 public class HomePage {
 
-    private static WebDriver driver;
-    private static final String CHAPTERS_LIST = "//*[contains(@class,'mainbody')]/ul//li";
-    private static final String SUB_HEADING = "Below is a list of links to the examples needed in the chapters. Click on the links below and follow the steps in the book.";
+  private static WebDriver driver;
+  private static final String CHAPTERS_LIST = "//*[contains(@class,'mainbody')]/ul//li";
+  private static final String SUB_HEADING = "Below is a list of links to the examples needed in the chapters. Click on the links below and follow the steps in the book.";
 
   @BeforeClass
   public void beforeClassSetup() {
-      driver = initializeDriver();
-      goToHomePage(driver);
+    driver = initializeDriver();
+    goToHomePage(driver);
   }
 
   @Test
   public void displayInputTest() {
-      WebElement inputField = driver.findElement(By.id("q"));
-      Assert.assertTrue(inputField.isDisplayed());
-      inputField.sendKeys("Cvetelina");
+    WebElement inputField = driver.findElement(By.id("q"));
+    Assert.assertTrue(inputField.isDisplayed());
+    inputField.sendKeys("Cvetelina");
   }
 
   @Test
   public void findUrlsTest() {
-      List<String> expectedNames = Arrays.asList("Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5");
-      System.out.println("Expected names:");
-      System.out.println(expectedNames);
-      List<WebElement> liElements = driver.findElements(By.xpath(CHAPTERS_LIST));
-      System.out.println("Actual names");
-      System.out.println(liElements);// This println() actually does't give me the strings of the elements, tried this liElements.forEach(System.out::println);
-      for (int i = 0; i < expectedNames.size(); i++) {
-          Assert.assertEquals(liElements.get(i).getText(), expectedNames.get(i), "Expected names do not match actual.");
-      }
+    List<String> expectedNames = Arrays.asList("Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5");
+    System.out.println("Expected names:");
+    System.out.println(expectedNames);
+    List<WebElement> liElements = driver.findElements(By.xpath(CHAPTERS_LIST));
+    System.out.println("Actual names");
+    System.out.println(liElements);// This println() actually does't give me the strings of the elements, tried this liElements.forEach(System.out::println);
+    for (int i = 0; i < expectedNames.size(); i++) {
+      Assert.assertEquals(liElements.get(i).getText(), expectedNames.get(i), "Expected names do not match actual.");
+    }
   }
 
   @Test
   public void displayHeadingTest() {
-      WebElement expectedHeading = driver.findElement(By.className("mainheading"));
-      String actualHeading = expectedHeading.getText();
-      System.out.println(actualHeading);
-      Assert.assertEquals("Selenium: Beginners Guide", actualHeading);
-  }    
+    WebElement expectedHeading = driver.findElement(By.className("mainheading"));
+    String actualHeading = expectedHeading.getText();
+    System.out.println(actualHeading);
+    Assert.assertEquals("Selenium: Beginners Guide", actualHeading);
+  }
 
   @Test
   public void displaySubHeadingTest() {
-      List<WebElement> subHeading = driver.findElements(By.xpath("//*[@class='mainheading']//following-sibling::div"));
-      WebElement element = subHeading.get(0);
-      String elementText = element.getText();
-      String result = elementText.split("\n")[0];
-      System.out.println("Expected text is:");
-      System.out.println(result);
-      Assert.assertEquals(result, SUB_HEADING);
+    List<WebElement> subHeading = driver.findElements(By.xpath("//*[@class='mainheading']//following-sibling::div"));
+    WebElement element = subHeading.get(0);
+    String elementText = element.getText();
+    String result = elementText.split("\n")[0];
+    System.out.println("Expected text is:");
+    System.out.println(result);
+    Assert.assertEquals(result, SUB_HEADING);
   }
 
   @AfterClass
   public void cleanUp() {
-      driver.close();
-    }
+    driver.close();
+  }
 
 }
