@@ -57,15 +57,12 @@ public class HomePage {
   @Test
   public void displaySubHeadingTest() {
       List<WebElement> subHeading = driver.findElements(By.xpath("//*[@class='mainheading']//following-sibling::div"));
-     // WebElement element = subHeading.get(0);
-      //String elementText = element.getText();
-      //int numberOfElements = subHeading.size();
-      for(int i=0; i < subHeading.size(); i++) {
-          String element = subHeading.get(i).getText();
-          System.out.println(element);
-          Assert.assertEquals(element, SUB_HEADING);
-          //Cannot extract the the first element, as this is a list of one element. tried to convert it to an array, but that didn't work neither.
-      }
+      WebElement element = subHeading.get(0);
+      String elementText = element.getText();
+      String result = elementText.split("\n")[0];
+      System.out.println("Expected text is:");
+      System.out.println(result);
+      Assert.assertEquals(result, SUB_HEADING);
   }
 
   @AfterClass
