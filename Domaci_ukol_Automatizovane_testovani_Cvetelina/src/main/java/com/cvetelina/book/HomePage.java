@@ -60,9 +60,7 @@ public class HomePage {
     WebElement element = subHeading.get(0);
     String elementText = element.getText();
     String result = elementText.split("\n")[0];
-    System.out.println("Expected text is:");
-    System.out.println(result);
-    Assert.assertEquals(result, SUB_HEADING);
+    Assert.assertEquals("Expected text and actual text:", result, SUB_HEADING);
   }
 
   @AfterClass
