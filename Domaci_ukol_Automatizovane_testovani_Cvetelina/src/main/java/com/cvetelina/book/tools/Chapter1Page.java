@@ -28,7 +28,7 @@ public class Chapter1Page {
         chapter1Link.click();
         System.out.println("Redirects to the chapter1 page after click.");
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "http://book.theautomatedtester.co.uk/chapter1");
+        Assert.assertEquals(URL, UrlToChapter1.SUB_HEADING_CHAPTER1);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
     }
 
@@ -83,7 +83,7 @@ public class Chapter1Page {
         Assert.assertTrue(!checkbox.isSelected());
     }
 
-    @Test(priority = 1)
+    @Test(priority = 2)
     public void homePageLinkTest(){
         String expectedUrl = "http://book.theautomatedtester.co.uk/";
         WebElement homeLink = driver.findElement(By.linkText("Home Page"));
@@ -92,7 +92,7 @@ public class Chapter1Page {
         Assert.assertEquals(redirectURL, expectedUrl);
         driver.navigate().back();
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "http://book.theautomatedtester.co.uk/chapter1");
+        Assert.assertEquals(URL, UrlToChapter1.SUB_HEADING_CHAPTER1);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class Chapter1Page {
         Assert.assertEquals("Verify this button is here", buttonNamedHere.getAttribute("value"), "Expected and actual text do not match.");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 0)
     public void loadAjaxButtonTest() {
         WebElement ajaxButton = driver.findElement(By.id("secondajaxbutton"));
         Assert.assertTrue(ajaxButton.isDisplayed());
@@ -128,7 +128,7 @@ public class Chapter1Page {
         Assert.assertEquals(textAfter.trim(), expectedText.trim());
     }
 
-    @Test(priority = 4)
+    @Test
     private void linksWithPopUpsTest() {
         WebElement firstLink = driver.findElement(By.id("multiplewindow"));
         firstLink.click();
@@ -167,14 +167,14 @@ public class Chapter1Page {
         Assert.assertEquals(ANOTHER_PAGE_TEXT, ajaxText.getText());
     }
 
-    @Test(priority = 3)
+    @Test
     public void inputFieldTest() {
         WebElement inputField = driver.findElement(By.id("storeinput"));
         Assert.assertTrue(inputField.isDisplayed());
         inputField.sendKeys("never mind");
     }
 
-    @Test
+    @Test(priority = 1)
     public void bigTextFieldTest() {
         WebElement textFieldInput = driver.findElement(EDITABLE_CONTENT_FIELD);
         Assert.assertTrue(textFieldInput.isDisplayed());
