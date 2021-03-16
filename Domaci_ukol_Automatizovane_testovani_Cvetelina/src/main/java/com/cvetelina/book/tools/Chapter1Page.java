@@ -28,7 +28,7 @@ public class Chapter1Page {
         chapter1Link.click();
         System.out.println("Redirects to the chapter1 page after click.");
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, UrlToChapter1.SUB_HEADING_CHAPTER1);
+        Assert.assertEquals(URL, UrlsToChapters.URL_CHAPTER1);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
     }
 
@@ -92,7 +92,7 @@ public class Chapter1Page {
         Assert.assertEquals(redirectURL, expectedUrl);
         driver.navigate().back();
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, UrlToChapter1.SUB_HEADING_CHAPTER1);
+        Assert.assertEquals(URL, UrlsToChapters.URL_CHAPTER1);
     }
 
     @Test
